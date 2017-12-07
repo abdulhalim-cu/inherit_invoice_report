@@ -14,6 +14,7 @@
         # 'security/ir.model.access.csv',
         'views/external_layout_header.xml',
         'views/report_invoice_document_inherit.xml',
+        'views/report_expense_inherit.xml',
     ],
     'demo': [
         'demo/demo.xml',
