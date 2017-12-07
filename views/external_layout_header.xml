@@ -84,6 +84,10 @@
         </div>
       </xpath>
 
+      <xpath expr="//div[@class='signature row text-center last-page']" position="after">
+        <br/>
+      </xpath>
+
     </template>
 
     <template id="inherit_external_layout_boxed" inherit_id="web.external_layout_boxed">
@@ -232,13 +236,6 @@
       </xpath>
 
     </template>
-
-    <!--<template id="report_invoice_docuement" inherit_id="account.report_invoice_document">-->
-      <!--<xpath expr="//table[@class='table table-condensed']" position="before">-->
-        <!--<br/>-->
-        <!--<br/>-->
-      <!--</xpath>-->
-    <!--</template>-->
 
   </data>
 </odoo>
