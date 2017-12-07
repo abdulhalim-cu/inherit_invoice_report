@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Inherit Invoice Report",
-
+    'name': "Cutomize Reports",
     'summary': """Inherit company data and logo in invoice report""",
-
     'description': """Invoice, Report""",
 
     'author': "Abdul Halim",
@@ -15,6 +13,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/external_layout_header.xml',
+        'views/report_invoice_document_inherit.xml',
     ],
     'demo': [
         'demo/demo.xml',

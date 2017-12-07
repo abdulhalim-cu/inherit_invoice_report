@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <template id="report_invoice_document_inherited" inherit_id="account.report_invoice_document">
+
+      <xpath expr="//div[hasclass('page')]//div[hasclass('row')]" position="attributes">
+        <attribute name="style">font-size: 23px !important;</attribute>
+      </xpath>
+
+      <xpath expr="//div[@name='invoice_address']//div[@class='mt16']" position="before">
+        <address t-field="o.partner_id"
+                 t-options='{"widget": "contact", "fields": ["phone", "mobile"], "no_marker": True}' />
+      </xpath>
+
+      <xpath expr="//table//thead" position="replace">
+        <thead style="font-size: 23px !important;">
+          <tr>
+            <th>Description</th>
+            <th class="hidden">Source Document</th>
+            <th class="text-right">Quantity</th>
+            <th class="text-right">Unit Price</th>
+            <th class="text-right">Amount</th>
+          </tr>
+        </thead>
+      </xpath>
+
+      <xpath expr="//table//tbody" position="replace">
+        <tbody class="invoice_tbody" style="font-size: 22px !important">
+          <tr t-foreach="o.invoice_line_ids" t-as="l">
+            <td><span t-field="l.name"/></td>
+            <td class="hidden"><span t-field="l.origin"/></td>
+            <td class="text-right">
+                <span t-field="l.quantity"/>
+                <span t-field="l.uom_id"  groups="product.group_uom"/>
+            </td>
+            <td class="text-right">
+                <span t-field="l.price_unit"/>
+            </td>
+            <td class="text-right" id="subtotal">
+                <span t-field="l.price_subtotal"
+                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            </td>
+          </tr>
+          <tr t-foreach="range(max(5-len(o.invoice_line_ids),0))" t-as="l">
+            <td>&amp;nbsp;</td>
+            <td class="hidden"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </xpath>
+
+      <xpath expr="//div[@class='clearfix']//div[@class='row pull-right']//div" position="attributes">
+        <attribute name="style">font-size: 22px !important;</attribute>
+      </xpath>
+
+    </template>
+  </data>
+</odoo>
